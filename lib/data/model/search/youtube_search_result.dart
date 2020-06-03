@@ -1,5 +1,7 @@
 library youtube_search_result;
 
+import 'dart:convert';
+
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
@@ -25,8 +27,8 @@ abstract class YoutubeSearchResult
     return serializers.serializeWith(YoutubeSearchResult.serializer, this);
   }
 
-  static YoutubeSearchResult fromJson(Map<String, dynamic> json) {
-    return serializers.deserializeWith(YoutubeSearchResult.serializer, json);
+  static YoutubeSearchResult fromJson(String jsonString) {
+    return serializers.deserializeWith(YoutubeSearchResult.serializer,json.decode(jsonString));
   }
 
   static Serializer<YoutubeSearchResult> get serializer =>

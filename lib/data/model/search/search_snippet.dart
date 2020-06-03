@@ -33,8 +33,9 @@ abstract class SearchSnippet
     return serializers.serializeWith(SearchSnippet.serializer, this);
   }
 
-  static SearchSnippet fromJson(Map<String, dynamic> json) {
-    return serializers.deserializeWith(SearchSnippet.serializer, json);
+  static SearchSnippet fromJson(String jsonString) {
+    return serializers.deserializeWith(
+        SearchSnippet.serializer, json.decode(jsonString));
   }
 
   static Serializer<SearchSnippet> get serializer => _$searchSnippetSerializer;

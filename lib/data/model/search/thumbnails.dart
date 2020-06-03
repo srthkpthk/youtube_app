@@ -2,7 +2,6 @@ library thumbnails;
 
 import 'dart:convert';
 
-import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:youtube_app/data/model/search/thumbnail.dart';
@@ -26,8 +25,9 @@ abstract class Thumbnails implements Built<Thumbnails, ThumbnailsBuilder> {
     return serializers.serializeWith(Thumbnails.serializer, this);
   }
 
-  static Thumbnails fromJson(Map<String, dynamic> json) {
-    return serializers.deserializeWith(Thumbnails.serializer, json);
+  static Thumbnails fromJson(String jsonString) {
+    return serializers.deserializeWith(
+        Thumbnails.serializer, json.decode(jsonString));
   }
 
   static Serializer<Thumbnails> get serializer => _$thumbnailsSerializer;

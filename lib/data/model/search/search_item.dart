@@ -24,8 +24,9 @@ abstract class SearchItem implements Built<SearchItem, SearchItemBuilder> {
     return serializers.serializeWith(SearchItem.serializer, this);
   }
 
-  static SearchItem fromJson(Map<String, dynamic> json) {
-    return serializers.deserializeWith(SearchItem.serializer, json);
+  static SearchItem fromJson(String jsonString) {
+    return serializers.deserializeWith(
+        SearchItem.serializer, json.decode(jsonString));
   }
 
   static Serializer<SearchItem> get serializer => _$searchItemSerializer;
